@@ -1,33 +1,18 @@
 import CharacterCard from "../components/CharacterCard";
-
-const personagensFake = [
-    {
-        id: 1,
-        nome: "Monkey D. Luffy",
-        cargo: "Capitão",
-        bando: "Chapéus de Palha",
-        imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/6/6f/Luffy_Anime_Infobox.png",
-    },
-    {
-        id: 2,
-        nome: "Roronoa Zoro",
-        cargo: "Espadachim",
-        bando: "Chapéus de Palha",
-        imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/5/5c/Zoro_Anime_Infobox.png",
-    },
-
-
-];
+import { Characters } from "../data/characters";
 
 function Home() {
     return (
-        <div className="p-8">
-            <h1 className="text-3xl font-bold mb-4">Catalogo One Piece</h1>
-            <p>Bem-vindo à enciclopédia de personagens de One Piece!</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {personagensFake.map((personagem) => (
-                    <CharacterCard key={personagem.id} character={personagem} />
-                ))}
+        <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-100 to=blue-100 flex flex-col items-center">
+            <div className="w-full max-w-5xl bg-white/90 rounded-2x1 shadow-xl mt-10 p-8">
+                <h1 className="text-4xl font-extrabold mb-6 text-center text-blue-600 drop-shadow">Catalogo One Piece
+                    </h1>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {Characters.map((character) => (
+                        <CharacterCard key={character.id} character={character} />
+                    ))}
+                </div>
             </div>
         </div>
     );
