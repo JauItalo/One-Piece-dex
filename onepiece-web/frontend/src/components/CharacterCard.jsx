@@ -22,13 +22,13 @@ function CharacterCard({ character}) {
     return (
         <Link
             to={`/character/${character.id}`}
-            className="bg-white rounded-lg shadow-md p-4 flex-col items-center hover:scale-105 transition-transform"
+            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:scale-105 transition-transform"
             >
             <img
                 src={character.imagemUrl}
                 alt={character.nome}
                 onError={(e) => {
-                    e.currentTarget.onError = null;
+                    e.currentTarget.onerror = null;
                     e.currentTarget.src = FALLBACK_AVATAR;
                 }}
                 className="w-24 h-24 object-cover rounded-full mb-2"
@@ -42,9 +42,7 @@ function CharacterCard({ character}) {
                 <p className="text-sm text-gray-600">{character.cargo}</p>
                 
                 <span 
-                    className={`text-xs mt-2 px-2 py-1 rounded ${getBandoClass}(
-                    character.bando
-            )}`}
+                    className={`text-xs mt-2 px-2 py-1 rounded ${getBandoClass(character.bando)}`}
             >
                 {character.bando}
             </span>
