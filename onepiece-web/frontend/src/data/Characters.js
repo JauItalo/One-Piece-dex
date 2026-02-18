@@ -3,7 +3,7 @@ export const Characters = [
     {
         id: 1,
         nome: "Monkey D. Luffy",
-        apelido: "Chapéu de Palha",
+        apelido: "Chapéus de Palha",
         bando: "Chapeus de Palha",
         cargo: "Capitão",
         recompensa: "3.000.000.000",
