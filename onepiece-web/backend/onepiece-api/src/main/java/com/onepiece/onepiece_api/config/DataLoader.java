@@ -20,7 +20,7 @@ public class DataLoader {
 
             Character luffy = new Character();
             luffy.setNome("Monkey D. Luffy");
-            luffy.setApelido("Chapéus de Palha");
+            luffy.setApelido("Mugiwara");
             luffy.setBando("Chapéus de Palha");
             luffy.setCargo("Capitão");
             luffy.setRecompensa("3.000.000.000");

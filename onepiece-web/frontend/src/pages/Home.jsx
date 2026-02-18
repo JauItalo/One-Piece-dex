@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CharacterCard from "../components/CharacterCard";
 import { Characters } from "../data/Characters";
 import { getCharacters } from "../service/api";
