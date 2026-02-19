@@ -1,6 +1,6 @@
-import { useParams, Link } from "react-router-dom";
-import { Characters } from "../data/Characters";
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Characters } from "../data/Characters";
 import { getCharacterById } from "../service/api";
 
 
@@ -47,7 +47,7 @@ function CharacterDetails() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-blue-100 flex flex-col items-center">
+            <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-blue-100 flex flex-col items-center animate-fadeIn">
                 <div className="w-full max-w-xl bg-white/90 rounded-2xl shadow-xl mt-10 p-8 text-center">
                     <p className="text-gray-700">Carregando...</p>
                 </div>
@@ -56,7 +56,7 @@ function CharacterDetails() {
     }
     if (!personagem) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-blue-100 flex flex-col items-center">
+            <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-blue-100 flex flex-col items-center animate-fadeIn">
                 <div className="w-full max-w-3xl bg-white/90 rounded-2xl shadow-xl mt-10 p-8">
                     <h1 className="text-2xl font-bold mb-4">Personagem Não Encontrado</h1>
                     <Link to="/" className="text-blue-600 underline">
@@ -68,7 +68,7 @@ function CharacterDetails() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-blue-100 flex flex-col items-center">
+        <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-blue-100 flex flex-col items-center animate-fadeIn">
             <div className="w-full max-w-3xl bg-white/90 rounded-2xl shadow-xl mt-10 p-8">
                 {usingFallback ? (
                     <p className="text-sm text-gray-600 mb-4">
@@ -85,7 +85,7 @@ function CharacterDetails() {
                                 e.currentTarget.onerror = null;
                                 e.currentTarget.src = FALLBACK_AVATAR;
                             }}
-                            className="w-44 h-44 object-cover rounded-full"
+                            className="w-44 h-44 object-cover rounded-full shadow-lg border-4 border-white"
                         />
                     </div>
 
@@ -101,19 +101,19 @@ function CharacterDetails() {
                         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Bando</p>
-                                <p className="font-semibold text-gray-900">{personagem.bando}</p>
+                                <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">{personagem.bando}</p>
                             </div>
 
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Cargo</p>
-                                <p className="font-semibold text-gray-900">
+                                <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">
                                     {personagem.cargo}
                                 </p>
                             </div>
 
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Recompensa</p>
-                                <p className="font-semibold text-gray-900">
+                                <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">
                                     {personagem.recompensa}
                                 </p>
                             </div>
@@ -121,12 +121,20 @@ function CharacterDetails() {
 
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Fruta do Diabo</p>
-                                <p className="font-semibold text-gray-900">
+                                <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">
                                     {personagem.frutaDoDiabo}
                                 </p>
                             </div>
                         </div>
 
+
+                        {/* Biografia do personagem */}
+                        {personagem.biografia && (
+                            <div className="mt-8 bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <h2 className="text-lg font-bold mb-2">Biografia</h2>
+                                <p className="text-gray-700 whitespace-pre-line">{personagem.biografia}</p>
+                            </div>
+                        )}
 
                         <Link to="/" className="inline-block mt-6 text-blue-600 underline">
                             Voltar para a Home

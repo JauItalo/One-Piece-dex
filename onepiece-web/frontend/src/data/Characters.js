@@ -9,6 +9,7 @@ export const Characters = [
         recompensa: "3.000.000.000",
         frutaDoDiabo: "Gomu Gomu no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/6/6f/Luffy_Anime_Infobox.png",
+        biografia: "Luffy é o capitão dos Chapéus de Palha e sonha em se tornar o Rei dos Piratas. Ele possui a Gomu Gomu no Mi, que lhe dá poderes de borracha. Conhecido por sua coragem, otimismo e fome insaciável, Luffy inspira todos ao seu redor a perseguirem seus sonhos.",
     },
     {
         id: 2,
@@ -19,6 +20,7 @@ export const Characters = [
         recompensa: "1.111.000.000",
         frutaDoDiabo: "Nenhuma",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/8/84/Roronoa_Zoro_Anime_Infobox.png",
+        biografia: "Zoro é o espadachim dos Chapéus de Palha, famoso por sua técnica de três espadas. Ele busca se tornar o maior espadachim do mundo e é conhecido por sua força, lealdade e péssimo senso de direção.",
     },
     {
         id: 3,
@@ -29,6 +31,7 @@ export const Characters = [
         recompensa: "366.000.000",
         frutaDoDiabo: "Nenhuma",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/9/9b/Nami_Anime_Infobox.png",
+        biografia: "Nami é a navegadora dos Chapéus de Palha, especialista em mapas e clima. Superou um passado difícil e agora sonha em mapear o mundo inteiro.",
     },
     {
         id: 4,
@@ -79,6 +82,7 @@ export const Characters = [
         recompensa: "394.000.000",
         frutaDoDiabo: "Nenhuma",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/7/7e/Franky_Anime_Infobox.png",
+        biografia: "Franky é o carismático carpinteiro dos Chapéus de Palha, um cyborg com grande coração e paixão por construir navios. Responsável pelo Thousand Sunny, é conhecido por seu estilo extravagante e grito 'SUPER!'.",
     },
     {
         id: 9,
@@ -89,6 +93,7 @@ export const Characters = [
         recompensa: "383.000.000",
         frutaDoDiabo: "Yomi Yomi no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Brook_Anime_Infobox.png",
+        biografia: "Brook é o músico esquelético dos Chapéus de Palha. Após comer a Yomi Yomi no Mi, voltou à vida como um esqueleto. É alegre, adora música e piadas, e sonha em reencontrar Laboon.",
     },
     {
         id: 10,
@@ -99,6 +104,7 @@ export const Characters = [
         recompensa: "1.100.000.000",
         frutaDoDiabo: "Nenhuma",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/7/7e/Jinbe_Anime_Infobox.png",
+        biografia: "Jinbe é um homem-peixe mestre do karatê e ex-shichibukai. É o timoneiro dos Chapéus de Palha, conhecido por sua honra, força e papel na luta pela igualdade entre humanos e homens-peixe.",
     },
 
     {
@@ -110,6 +116,7 @@ export const Characters = [
         recompensa: "3.996.000.000",
         frutaDoDiabo: "Yami Yami no Mi / Gura Gura no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2d/Marshall_D._Teach_Anime_Infobox.png",
+        biografia: "Barba Negra é o ambicioso capitão dos Piratas do Barba Negra. Único a possuir dois poderes de Akuma no Mi, é um dos maiores antagonistas do mundo de One Piece, movido por sonhos grandiosos e crueldade.",
     },
     {
         id: 12,
@@ -120,6 +127,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Riki Riki no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2a/Jesus_Burgess_Anime_Infobox.png",
+        biografia: "Jesus Burgess é o timoneiro e capitão do 1º navio dos Piratas do Barba Negra. Conhecido por sua força física e fanatismo por lutas, é leal a Teach e busca sempre provar seu valor.",
     },
     {
         id: 13,
@@ -130,6 +138,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Suke Suke no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Shiryu_Anime_Infobox.png",
+        biografia: "Shiryu, o da Chuva, é o capitão do 2º navio dos Piratas do Barba Negra. Ex-carcereiro de Impel Down, é temido por sua crueldade e habilidade com a espada.",
     },
     {
         id: 14,
@@ -140,6 +149,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Wapu Wapu no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Van_Augur_Anime_Infobox.png",
+        biografia: "Van Augur é o atirador e capitão do 3º navio dos Piratas do Barba Negra. É calmo, preciso e letal, famoso por sua pontaria e tranquilidade em batalha.",
     },
     {
         id: 15,
@@ -150,6 +160,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Shima Shima no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Avalo_Pizarro_Anime_Infobox.png",
+        biografia: "Avalo Pizarro, o Rei Corrupto, é o capitão do 4º navio dos Piratas do Barba Negra. Ex-rei tirano, é conhecido por sua crueldade e ambição.",
     },
     {
         id: 16,
@@ -160,6 +171,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Desconhecida",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Laffitte_Anime_Infobox.png",
+        biografia: "Laffitte é o navegador e capitão do 5º navio dos Piratas do Barba Negra. Misterioso e persuasivo, é mestre em infiltração e manipulação.",
     },
     {
         id: 17,
@@ -170,6 +182,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Inu Inu no Mi, modelo Kyubi no Kitsune",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Catarina_Devon_Anime_Infobox.png",
+        biografia: "Catarina Devon é a capitã do 6º navio dos Piratas do Barba Negra. Conhecida como a Caçadora da Lua Crescente, é sádica e possui uma Akuma no Mi mítica.",
     },
     {
         id: 18,
@@ -180,6 +193,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Deka Deka no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Sanjuan_Wolf_Anime_Infobox.png",
+        biografia: "Sanjuan Wolf é o gigante e capitão do 7º navio dos Piratas do Barba Negra. Seu tamanho colossal o torna uma arma viva em batalhas navais.",
     },
     {
         id: 19,
@@ -190,6 +204,7 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Gabu Gabu no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Vasco_Shot_Anime_Infobox.png",
+        biografia: "Vasco Shot é o capitão do 8º navio dos Piratas do Barba Negra. Conhecido por seu comportamento desregrado e força bruta.",
     },
     {
         id: 20,
@@ -200,5 +215,6 @@ export const Characters = [
         recompensa: "??",
         frutaDoDiabo: "Shiku Shiku no Mi",
         imagemUrl: "https://static.wikia.nocookie.net/onepiece/images/2/2e/Doc_Q_Anime_Infobox.png",
+        biografia: "Doc Q é o médico e capitão do 9º navio dos Piratas do Barba Negra. Frágil de saúde, mas perigoso, sempre acompanhado de seu cavalo Stronger.",
     }
 ];

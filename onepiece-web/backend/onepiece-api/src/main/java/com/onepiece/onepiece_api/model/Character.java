@@ -22,4 +22,5 @@ public class Character {
     private String recompensa;
     private String frutaDoDiabo;
     private String imagemUrl;
+    private String biografia;
 }
