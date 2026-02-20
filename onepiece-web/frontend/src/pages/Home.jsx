@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import Button from "../components/Button";
 import CharacterCard from "../components/CharacterCard";
+import CharacterFilter from "../components/CharacterFilter";
+import Loader from "../components/Loader";
 import { Characters } from "../data/Characters";
 import { getCharacters } from "../service/api";
-
 
 function Home() {
     const [characters, setCharacters] = useState(Characters);
@@ -71,43 +73,17 @@ function Home() {
             <div className="w-full max-w-5xl bg-white/90 rounded-2xl shadow-xl mt-4 sm:mt-8 md:mt-10 p-2 sm:p-4 md:p-8">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6 text-center text-blue-600 drop-shadow">Catalogo One Piece</h1>
 
-                <div className="flex flex-col gap-2 sm:gap-4 mb-4 sm:mb-6 w-full sm:flex-row sm:justify-center sm:items-center">
-                    <input
-                        type="text"
-                        placeholder="Buscar personagem..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
-                    />
-                    <select
-                        value={bando}
-                        onChange={(e) => setBando(e.target.value)}
-                        className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
-                    >
-                        {bandos.map((b) => (
-                            <option key={b} value={b}>{b}</option>
-                        ))}
-                    </select>
-                    <select
-                        value={cargo}
-                        onChange={(e) => setCargo(e.target.value)}
-                        className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
-                    >
-                        {cargos.map((c) => (
-                            <option key={c} value={c}>{c}</option>
-                        ))}
-                    </select>
-                </div>
-                {loading ? (
-                    <div className="flex justify-center my-8">
-                        <svg className="animate-spin h-8 w-8 text-blue-500"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10"
-                                stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                        </svg>
-                    </div>
-                ) : null}
+                <CharacterFilter
+                  search={search}
+                  setSearch={setSearch}
+                  bando={bando}
+                  setBando={setBando}
+                  cargo={cargo}
+                  setCargo={setCargo}
+                  bandos={bandos}
+                  cargos={cargos}
+                />
+                {loading ? <Loader /> : null}
 
                 {!loading && usingFallback ? (
                     <div className="flex items-center justify-center text-yellow-700 bg-yellow-100 rounded-lg p-3 mt-2 gap-2">
@@ -144,13 +120,10 @@ function Home() {
                 </div>
                 {visibleCount < filtered.length && (
                     <div className="flex justify-center mt-6">
-                        <button
-                            onClick={() => setVisibleCount((prev) => prev + 9)}
-                            className="px-6 py-2 bg-blue-500 text-white rounded-lg font-semibold shadow 
-                            hover:bg-blue-600 transition-colors duration-300 active:scale-95"
-                        >
+                        <Button
+                            onClick={() => setVisibleCount((prev) => prev + 9)}>
                             Carregar mais
-                        </button>
+                        </Button>
                     </div>
                 )}
             </div>

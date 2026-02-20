@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
@@ -53,3 +54,17 @@ function CharacterCard({ character }) {
 }
 
 export default CharacterCard;
+
+CharacterCard.propTypes = {
+    character: PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        nome: PropTypes.string.isRequired,
+        apelido: PropTypes.string,
+        bando: PropTypes.string.isRequired,
+        cargo: PropTypes.string.isRequired,
+        recompensa: PropTypes.string,
+        frutaDoDiabo: PropTypes.string,
+        imagemUrl: PropTypes.string,
+        biografia: PropTypes.string,
+    }).isRequired,
+};
