@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const FALLBACK_AVATAR =
@@ -20,12 +21,14 @@ function getBandoClass(bando) {
 }
 
 function CharacterCard({ character }) {
+    const [editing, setEditing] = useState(false);
+    const [deleted, setDeleted] = useState(false);
+    const [updatedCharacter, setUpdatedCharacter] = useState(character);
+    const navigate = useNavigate();
     return (
-        <Link
-            to={`/character/${character.id}`}
-            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center 
-            hover:scale-105 hover:shadow-xl transition-transform transition-shadow 
-            duration-300 ease-out animeate-fadeIn"
+        <div
+            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:scale-105 hover:shadow-xl transition-transform transition-shadow duration-300 ease-out animeate-fadeIn cursor-pointer"
+            onClick={() => navigate(`/character/${character.id || character._id}`)}
         >
             <img
                 src={character.imagemUrl}
@@ -37,19 +40,12 @@ function CharacterCard({ character }) {
                 className="w-24 h-24 object-cover rounded-full mb-2"
             />
             <h3 className="text-lg font-bold">{character.nome}</h3>
-
             {character.apelido ? (
                 <p className="text-sm text-gray-500">{character.apelido}</p>
             ) : null}
-
             <p className="text-sm text-gray-600">{character.cargo}</p>
-
-            <span
-                className={`text-xs mt-2 px-2 py-1 rounded ${getBandoClass(character.bando)}`}
-            >
-                {character.bando}
-            </span>
-        </Link>
+            <span className={`text-xs mt-2 px-2 py-1 rounded ${getBandoClass(character.bando)}`}>{character.bando}</span>
+        </div>
     );
 }
 

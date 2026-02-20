@@ -93,32 +93,26 @@ function CharacterDetails() {
                         <h1 className="text-3xl font-extrabold text-gray-900">
                             {personagem.nome}
                         </h1>
-
                         {personagem.apelido ? (
                             <p className="text-gray-600 mt-1">{personagem.apelido}</p>
                         ) : null}
-
                         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Bando</p>
                                 <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">{personagem.bando}</p>
                             </div>
-
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Cargo</p>
                                 <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">
                                     {personagem.cargo}
                                 </p>
                             </div>
-
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Recompensa</p>
                                 <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">
                                     {personagem.recompensa}
                                 </p>
                             </div>
-
-
                             <div className="bg-white rounded-lg border border-gray-200 p-3">
                                 <p className="text-xs text-gray-500">Fruta do Diabo</p>
                                 <p className="inline-block px-2 py-1 rounded bg-blue-100 text-blue-800 font-semibold text-xs">
@@ -126,16 +120,12 @@ function CharacterDetails() {
                                 </p>
                             </div>
                         </div>
-
-
-                        {/* Biografia do personagem */}
                         {personagem.biografia && (
                             <div className="mt-8 bg-gray-50 rounded-lg p-4 border border-gray-200">
                                 <h2 className="text-lg font-bold mb-2">Biografia</h2>
                                 <p className="text-gray-700 whitespace-pre-line">{personagem.biografia}</p>
                             </div>
                         )}
-
                         <Link to="/" className="inline-block mt-6 text-blue-600 underline">
                             Voltar para a Home
                         </Link>

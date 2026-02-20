@@ -1,47 +1,43 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import CharacterCard from "../components/CharacterCard";
 import CharacterFilter from "../components/CharacterFilter";
 import Loader from "../components/Loader";
-import { Characters } from "../data/Characters";
-import { getCharacters } from "../service/api";
+import { getCharactersPaginated } from "../service/api";
 
 function Home() {
-    const [characters, setCharacters] = useState(Characters);
+    const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
     const [usingFallback, setUsingFallback] = useState(false);
 
     const [search, setSearch] = useState("");
     const [bando, setBando] = useState("Todos");
     const [cargo, setCargo] = useState("Todos");
-    const [visibleCount, setVisibleCount] = useState(9);
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
-        let cancelled = false;
-
-        async function load() {
-            try {
-                setLoading(true);
-                setUsingFallback(false);
-                const data = await getCharacters();
-
-                if (!cancelled) {
-                    setCharacters(Array.isArray(data) ? data : Characters);
-                }
-            } catch {
-                if (!cancelled) {
-                    setCharacters(Characters);
-                    setUsingFallback(true);
-                }
-            } finally {
-                if (!cancelled) setLoading(false);
-            }
-        }
-        load();
-        return () => {
-            cancelled = true;
-        }
+        loadCharacters(0);
     }, []);
+
+    async function loadCharacters(pageToLoad) {
+        setLoading(true);
+        try {
+            const data = await getCharactersPaginated(pageToLoad, 9);
+            if (pageToLoad === 0) {
+                setCharacters(data.content);
+            } else {
+                setCharacters((prev) => [...prev, ...data.content]);
+            }
+            setPage(data.number);
+            setTotalPages(data.totalPages);
+        } catch {
+            setUsingFallback(true);
+        } finally {
+            setLoading(false);
+        }
+    }
 
 
     const filtered = characters.filter((c) => {
@@ -53,8 +49,9 @@ function Home() {
         return matchName && matchBando && matchCargo;
     });
 
+    // Quando filtros mudam, recarrega a primeira página
     useEffect(() => {
-        setVisibleCount(9);
+        loadCharacters(0);
     }, [search, bando, cargo]);
 
     const bandos = [
@@ -68,11 +65,19 @@ function Home() {
     ];
 
 
+    // ...existing code...
+    // Importar o formulário
+    // import CreateCharacterForm from "../components/CreateCharacterForm";
+    // Adicionar função para atualizar lista após criar
+    const navigate = useNavigate();
     return (
         <div className="min-h-screen bg-gradient-to-br from-red-100 via-yellow-100 to-blue-100 flex flex-col items-center">
             <div className="w-full max-w-5xl bg-white/90 rounded-2xl shadow-xl mt-4 sm:mt-8 md:mt-10 p-2 sm:p-4 md:p-8">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 sm:mb-6 text-center text-blue-600 drop-shadow">Catalogo One Piece</h1>
-
+                <div className="flex items-center mb-6 relative">
+                    <div className="flex-1 flex justify-center">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-600 drop-shadow">Catalogo One Piece</h1>
+                    </div>
+                </div>
                 <CharacterFilter
                   search={search}
                   setSearch={setSearch}
@@ -84,7 +89,6 @@ function Home() {
                   cargos={cargos}
                 />
                 {loading ? <Loader /> : null}
-
                 {!loading && usingFallback ? (
                     <div className="flex items-center justify-center text-yellow-700 bg-yellow-100 rounded-lg p-3 mt-2 gap-2">
                         <svg className="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -93,8 +97,6 @@ function Home() {
                         <span>Não foi possível conectar à API. Mostrando dados locais.</span>
                     </div>
                 ) : null}
-
-
                 <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     {loading ? (
                         Array.from({ length: 9 }).map((_, idx) => (
@@ -113,15 +115,14 @@ function Home() {
                             <span className="text-gray-500 text-lg">Nenhum personagem encontrado.</span>
                         </div>
                     ) : (
-                        filtered.slice(0, visibleCount).map((character) => (
-                            <CharacterCard key={character.id} character={character} />
+                        filtered.map((character) => (
+                            <CharacterCard key={character.id || character._id} character={character} />
                         ))
                     )}
                 </div>
-                {visibleCount < filtered.length && (
+                {page + 1 < totalPages && (
                     <div className="flex justify-center mt-6">
-                        <Button
-                            onClick={() => setVisibleCount((prev) => prev + 9)}>
+                        <Button onClick={() => loadCharacters(page + 1)}>
                             Carregar mais
                         </Button>
                     </div>

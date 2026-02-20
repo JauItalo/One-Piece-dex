@@ -5,9 +5,26 @@ const api = axios.create({
     timeout: 8000,
 });
 
-export async function getCharacters(){
-    const response = await api.get("/characters");
+
+// Busca paginada
+export async function getCharactersPaginated(page = 0, size = 9) {
+    const response = await api.get(`/characters?page=${page}&size=${size}`);
     return response.data;
+}
+
+// CRUD
+export async function createCharacter(character) {
+    const response = await api.post("/characters", character);
+    return response.data;
+}
+
+export async function updateCharacter(id, character) {
+    const response = await api.put(`/characters/${id}`, character);
+    return response.data;
+}
+
+export async function deleteCharacter(id) {
+    await api.delete(`/characters/${id}`);
 }
 
 
