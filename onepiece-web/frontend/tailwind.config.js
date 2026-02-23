@@ -1,4 +1,9 @@
 export default {
+  darkMode: "class",
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       keyframes: {
@@ -11,13 +16,6 @@ export default {
         fadeIn: 'fadeIn 0.6s ease-out',
       },
     },
-  },
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
   },
   plugins: [],
 }

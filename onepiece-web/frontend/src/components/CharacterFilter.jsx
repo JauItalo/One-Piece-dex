@@ -6,12 +6,12 @@ const CharacterFilter = ({ search, setSearch, bando, setBando, cargo, setCargo, 
 			placeholder="Buscar personagem..."
 			value={search}
 			onChange={(e) => setSearch(e.target.value)}
-			className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
+			className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 focus:outline-none focus:ring focus:border-blue-300 dark:focus:border-blue-400 text-sm sm:text-base"
 		/>
 		<select
 			value={bando}
 			onChange={(e) => setBando(e.target.value)}
-			className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
+			className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 focus:outline-none focus:ring focus:border-blue-300 dark:focus:border-blue-400 text-sm sm:text-base"
 		>
 			{bandos.map((b) => (
 				<option key={b} value={b}>{b}</option>
@@ -20,7 +20,7 @@ const CharacterFilter = ({ search, setSearch, bando, setBando, cargo, setCargo, 
 		<select
 			value={cargo}
 			onChange={(e) => setCargo(e.target.value)}
-			className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-blue-300 text-sm sm:text-base"
+			className="w-full sm:w-auto px-3 sm:px-4 py-2 rounded border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 focus:outline-none focus:ring focus:border-blue-300 dark:focus:border-blue-400 text-sm sm:text-base"
 		>
 			{cargos.map((c) => (
 				<option key={c} value={c}>{c}</option>

@@ -10,13 +10,13 @@ const FALLBACK_AVATAR =
 function getBandoClass(bando) {
     switch (bando) {
         case "Chapéus de Palha":
-            return "bg-red-100 text-red-800";
+            return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200";
         case "Marinha":
-            return "bg-blue-100 text-blue-800";
+            return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200";
         case "Piratas do Barba Negra":
-            return "bg-gray-100 text-gray-800";
+            return "bg-gray-100 text-gray-800 dark:bg-slate-700/50 dark:text-slate-200";
         default:
-            return "bg-white text-gray-800";
+            return "bg-white text-gray-800 dark:bg-slate-800 dark:text-slate-100";
     }
 }
 
@@ -27,7 +27,7 @@ function CharacterCard({ character }) {
     const navigate = useNavigate();
     return (
         <div
-            className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:scale-105 hover:shadow-xl transition-transform transition-shadow duration-300 ease-out animeate-fadeIn cursor-pointer"
+            className="bg-white dark:bg-slate-900 rounded-lg shadow-md p-4 flex flex-col items-center hover:scale-105 hover:shadow-xl transition-transform transition-shadow duration-300 ease-out animeate-fadeIn cursor-pointer dark:text-slate-100"
             onClick={() => navigate(`/character/${character.id || character._id}`)}
         >
             <img
@@ -41,9 +41,9 @@ function CharacterCard({ character }) {
             />
             <h3 className="text-lg font-bold">{character.nome}</h3>
             {character.apelido ? (
-                <p className="text-sm text-gray-500">{character.apelido}</p>
+                <p className="text-sm text-gray-500 dark:text-slate-300">{character.apelido}</p>
             ) : null}
-            <p className="text-sm text-gray-600">{character.cargo}</p>
+            <p className="text-sm text-gray-600 dark:text-slate-300">{character.cargo}</p>
             <span className={`text-xs mt-2 px-2 py-1 rounded ${getBandoClass(character.bando)}`}>{character.bando}</span>
         </div>
     );

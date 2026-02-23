@@ -15,8 +15,6 @@ public class DataLoader {
     @Bean
     CommandLineRunner initDatabase(CharacterRepository characterRepository) {
         return args -> {
-            if (characterRepository.count() > 0) return;
-
             Character luffy = new Character();
             luffy.setNome("Monkey D. Luffy");
             luffy.setApelido("Mugiwara");
@@ -218,11 +216,58 @@ public class DataLoader {
             docQ.setImagemUrl("https://static.wikia.nocookie.net/onepiece/images/2/2e/Doc_Q_Anime_Infobox.png");
             docQ.setBiografia("Doc Q é o médico e capitão do 9º navio dos Piratas do Barba Negra. Frágil de saúde, mas perigoso, sempre acompanhado de seu cavalo Stronger.");
 
+            Character sakazuki = new Character();
+            sakazuki.setNome("Sakazuki");
+            sakazuki.setApelido("Akainu");
+            sakazuki.setBando("Marinha");
+            sakazuki.setCargo("Almirante de Frota");
+            sakazuki.setRecompensa("??");
+            sakazuki.setFrutaDoDiabo("Magu Magu no Mi");
+            sakazuki.setImagemUrl("https://static.wikia.nocookie.net/onepiece/images/5/5e/Sakazuki_Anime_Infobox.png");
+            sakazuki.setBiografia("Sakazuki, conhecido como Akainu, é o atual Almirante de Frota da Marinha. Extremamente rígido e adepto da 'Justiça Absoluta', ele é temido por seu poder devastador de magma e por sua postura implacável contra piratas.");
 
-            characterRepository.saveAll(List.of(
-                luffy, zoro, nami, usopp, sanji, chopper, robin, franky, brook, jinbe, 
-                teach, burgess, shiryu, vanAugur, pizarro, laffitte, devon, wolf, vasco, docQ
-            ));
+            Character borsalino = new Character();
+            borsalino.setNome("Borsalino");
+            borsalino.setApelido("Kizaru");
+            borsalino.setBando("Marinha");
+            borsalino.setCargo("Almirante");
+            borsalino.setRecompensa("??");
+            borsalino.setFrutaDoDiabo("Pika Pika no Mi");
+            borsalino.setImagemUrl("https://static.wikia.nocookie.net/onepiece/images/3/3f/Borsalino_Anime_Infobox.png");
+            borsalino.setBiografia("Borsalino, o Kizaru, é um Almirante da Marinha conhecido por seu jeito despreocupado e velocidade absurda. Com a Pika Pika no Mi, ele pode se mover e atacar na velocidade da luz, tornando-se um dos oficiais mais perigosos da Marinha.");
+
+            Character issho = new Character();
+            issho.setNome("Issho");
+            issho.setApelido("Fujitora");
+            issho.setBando("Marinha");
+            issho.setCargo("Almirante");
+            issho.setRecompensa("??");
+            issho.setFrutaDoDiabo("Zushi Zushi no Mi");
+            issho.setImagemUrl("https://static.wikia.nocookie.net/onepiece/images/2/2b/Issho_Anime_Infobox.png");
+            issho.setBiografia("Issho, conhecido como Fujitora, é um Almirante da Marinha que segue sua própria visão de justiça. Mesmo cego, é um espadachim formidável e usa a Zushi Zushi no Mi para manipular gravidade em larga escala.");
+
+            Character aramaki = new Character();
+            aramaki.setNome("Aramaki");
+            aramaki.setApelido("Ryokugyu");
+            aramaki.setBando("Marinha");
+            aramaki.setCargo("Almirante");
+            aramaki.setRecompensa("??");
+            aramaki.setFrutaDoDiabo("Mori Mori no Mi");
+            aramaki.setImagemUrl("https://static.wikia.nocookie.net/onepiece/images/6/6b/Aramaki_Anime_Infobox.png");
+            aramaki.setBiografia("Aramaki, o Ryokugyu, é um dos atuais Almirantes da Marinha. Confiante e agressivo, ele usa a Mori Mori no Mi para manipular plantas, absorver nutrientes e dominar o campo de batalha com crescimento vegetal massivo.");
+
+
+            List<Character> seedCharacters = List.of(
+                luffy, zoro, nami, usopp, sanji, chopper, robin, franky, brook, jinbe,
+                teach, burgess, shiryu, vanAugur, pizarro, laffitte, devon, wolf, vasco, docQ,
+                sakazuki, borsalino, issho, aramaki
+            );
+
+            for (Character seed : seedCharacters) {
+                if (!characterRepository.existsByNome(seed.getNome())) {
+                    characterRepository.save(seed);
+                }
+            }
         };
     }
 }
